@@ -1,1 +1,1 @@
-# pose_estimation_on_video_opencv_python
+# pose_estimation_opencv_python
