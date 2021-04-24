@@ -44,7 +44,8 @@ for i in range(numPoints):
         for key in pointsName:
             if pointsName[key] == i:
                 print("Part name: "+key+" prob: "+str(prob))
-        cv2.putText(frame, "{}".format(i), (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 255), 3, lineType=cv2.LINE_AA)
+        cv2.circle(frame, (int(x), int(y)), 2, (0, 255, 255), thickness=-1, lineType=cv2.FILLED)
+        cv2.putText(frame, "{}".format(i), (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3, lineType=cv2.LINE_AA)
 
 cv2.imshow("Output",frame)
 cv2.waitKey(0)
