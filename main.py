@@ -20,6 +20,8 @@ pointsName = {
             "Background": 18}
 numPoints = 18
 net = cv2.dnn.readNetFromCaffe(protoFile, weightsFile)
+net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
 
 inpBlob = cv2.dnn.blobFromImage(frame, 1.0 / 255, (inWidth, inHeight), (0, 0, 0), swapRB=False, crop=False)
 
