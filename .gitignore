@@ -8,7 +8,8 @@ __pycache__/
 
 # Distribution / packaging
 .idea/
-yolov4.weights
+*.weights
+*.caffemodel
 .DS_Store
 .Python
 build/
