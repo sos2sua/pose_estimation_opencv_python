@@ -3,11 +3,11 @@ import cv2
 protoFile = "models/openpose_pose_coco.prototxt"
 weightsFile = "models/pose_iter_440000.caffemodel"
 
-frame = cv2.imread("inputImages/5.jpg")
+frame = cv2.imread("inputImages/1.jpg")
 frameHeight, frameWidth, _ = frame.shape
 
-inWidth = 736
-inHeight = 736
+inWidth = frameWidth #736
+inHeight = frameHeight #736
 
 pointsName = {
             "Nose": 0, "Neck": 1,
@@ -18,7 +18,7 @@ pointsName = {
             "REye": 14, "LEye": 15,
             "REar": 16, "LEar": 17,
             "Background": 18}
-numPoints = 7 #18
+numPoints = 18
 net = cv2.dnn.readNetFromCaffe(protoFile, weightsFile)
 
 inpBlob = cv2.dnn.blobFromImage(frame, 1.0 / 255, (inWidth, inHeight), (0, 0, 0), swapRB=False, crop=False)
@@ -40,9 +40,9 @@ for i in range(numPoints):
 
     if prob > 0.20:
         for key in pointsName:
-            if pointsName[key]==i:
+            if pointsName[key] == i:
                 print("Part name: "+key+" prob: "+str(prob))
-        cv2.putText(frame, "{}".format(i), (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1.4, (0, 0, 255), 3, lineType=cv2.LINE_AA)
+        cv2.putText(frame, "{}".format(i), (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 255), 3, lineType=cv2.LINE_AA)
 
 cv2.imshow("Output",frame)
 cv2.waitKey(0)
