@@ -12,7 +12,7 @@ __pycache__/
 *.caffemodel
 .DS_Store
 .Python
-outputImages/
+outputImages/*
 build/
 develop-eggs/
 dist/
